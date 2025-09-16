@@ -41,15 +41,21 @@ void comida(int cantidad[5],string carrito[5],int pre_comida[5]){
             }
         }
     }
-    
-    for (int j=0;j<i;j++){
-        cout << "producto: " << carrito[j] << " cantidad: " << cantidad[j] << " precio: $" << pre_comida[j] << std::endl;
-    }
 
     
 }
 
 void liempieza(){
+}
+
+void factura(int cantidad[5],string carrito[5],int pre_comida[5]){
+    cout << "FACTURA" << endl;
+    cout << "====================" << endl;
+    float subtotal=0,impuesto,costo_total,descuento;
+    for (int i=0;i<5;i++){
+        cout << "producto: " << carrito[i] << " cantidad: " << cantidad[i] << " precio: $" << pre_comida[i] << std::endl;
+        subtotal+=pre_comida[i];
+    }
 }
 
 int menu(){
@@ -89,8 +95,8 @@ int main(){
                 cout << "opcion no valida" << endl;
                 break;
         }
-
     }
+    factura(cantidad,carrito,pre_comida);
 
 
 }
