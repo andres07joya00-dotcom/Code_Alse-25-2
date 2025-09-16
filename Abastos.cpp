@@ -29,19 +29,15 @@ void comida(int cantidad[5],string carrito[5],int pre_comida[5]){
         cin >> carrito[i];
         cout << "¿cuantos desea llevar?(numero): ";
         cin >> cantidad[i];
+        for (int j=0;j<5;j++){
+            if (carrito[i]==pr_comida[j]){
+                pre_comida[i]=precio[j]*cantidad[i];
+            }
+        }
         i++;
         cout << "¿desea llevar otro producto?(s/n): ";
         cin >> opc;
     }
-
-    for(int j=0;j<i;j++){
-        for(int k=0;k<5;k++){
-            if (carrito[j]==pr_comida[k]){
-                pre_comida[j]=precio[k]*cantidad[j];
-            }
-        }
-    }
-
     
 }
 
@@ -70,11 +66,11 @@ int menu(){
 }
 
 int main(){
-    int cantidad[5];
-    string carrito[5];
-    int pre_comida[5];
+    int cantidad[5]={0};
+    string carrito[5]={""};
+    int pre_comida[5]={0};
     char opc='s';
-    int a;
+    int a=0;
     cout << "BIENVENIDO A LA TIENDA ECI PA" << endl;
     cout << "============================" << endl;
     cout << "¿deasea llevar algo? (s/n): ";
