@@ -9,9 +9,44 @@ como entrada, luego calcular el subtotal, el impuesto (8%) y el costo total
  Muestra el costo total, incluyendo el descuento si es aplicable.
 */
 #include <iostream>
+#include <string>
+using namespace std;
 
-void comida(){
+void comida(int cantidad[5],string carrito[5],int pre_comida[5]){
+    string pr_comida[5]={"arroz","pollo","huevo","leche","pan"};
+    int precio[5]={15,30,25,20,10};
 
+    cout << "PRODUCTOS COMIDA" << endl;
+    cout << "====================" << endl;
+    cout << "puedes llevar maximo 5 productos" << endl;
+    for (int i=0;i<5;i++){
+        std::cout << pr_comida[i] << " $" << precio[i] << endl;
+    }
+    int i=0;
+    char opc='s';
+    while (opc=='s' && i<5){
+        cout << "¿que producto desea llevar?(escriba el nombre): ";
+        cin >> carrito[i];
+        cout << "¿cuantos desea llevar?(numero): ";
+        cin >> cantidad[i];
+        i++;
+        cout << "¿desea llevar otro producto?(s/n): ";
+        cin >> opc;
+    }
+
+    for(int j=0;j<i;j++){
+        for(int k=0;k<5;k++){
+            if (carrito[j]==pr_comida[k]){
+                pre_comida[j]=precio[k]*cantidad[j];
+            }
+        }
+    }
+    
+    for (int j=0;j<i;j++){
+        cout << "producto: " << carrito[j] << " cantidad: " << cantidad[j] << " precio: $" << pre_comida[j] << std::endl;
+    }
+
+    
 }
 
 void liempieza(){
@@ -19,37 +54,39 @@ void liempieza(){
 
 int menu(){
     int opcion;
-    std::cout << "=====MENU=====" << std::endl;
-    std::cout << "(1). productos de comida" << std::endl;
-    std::cout << "(2). productos de limpieza" << std::endl;
-    std::cout << "(3). SALIR" << std::endl;
-    std::cout << "Elige una opcion(numero): ";
-    std::cin >> opcion;
+    cout << "=====MENU=====" << endl;
+    cout << "(1). productos de comida" << endl;
+    cout << "(2). productos de limpieza" << endl;
+    cout << "(3). SALIR" << endl;
+    cout << "Elige una opcion(numero): ";
+    cin >> opcion;
     return opcion;
 }
 
 int main(){
-
+    int cantidad[5];
+    string carrito[5];
+    int pre_comida[5];
     char opc='s';
     int a;
-    std::cout << "BIENVENIDO A LA TIENDA ECI PA" << std::endl;
-    std::cout << "============================" << std::endl;
-    std::cout << "¿deasea llevar algo? (s/n): ";
-    std::cin >> opc;
+    cout << "BIENVENIDO A LA TIENDA ECI PA" << endl;
+    cout << "============================" << endl;
+    cout << "¿deasea llevar algo? (s/n): ";
+    cin >> opc;
     while (opc== 's' && a!=3){
         a=menu();
         switch (a){
             case 1:
-                comida();
+                comida(cantidad,carrito,pre_comida);
                 break;
             case 2:
                 liempieza();
                 break;
             case 3:
-                std::cout << "GRACIAS" << std::endl;
+                cout << "GRACIAS" << endl;
                 break;
             default:
-                std::cout << "opcion no valida" << std::endl;
+                cout << "opcion no valida" << endl;
                 break;
         }
 
