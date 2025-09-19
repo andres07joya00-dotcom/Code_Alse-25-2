@@ -8,6 +8,7 @@ como entrada, luego calcular el subtotal, el impuesto (8%) y el costo total
 (redondeado a dos decimales).Si el costo total es mayor a $100, aplica un descuento del 10%.
  Muestra el costo total, incluyendo el descuento si es aplicable.
 */
+// ANDRES FELIPE JOYA RUIZ 
 #include <iostream>
 #include <string>
 using namespace std;
