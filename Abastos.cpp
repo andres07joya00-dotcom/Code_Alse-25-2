@@ -69,14 +69,30 @@ void liempieza(int cant_limpieza[5],string carrito[5],int pre_limpieza[5]){
     }
 }
 
-void factura(int cantidad[5],string carrito[5],int pre_comida[5]){
+void factura(int cantidad[5],string carrito[5],int pre_comida[5], int pre_limpieza[5],string carrito_limpieza[5], int cant_limpieza[5]){
     cout << "FACTURA" << endl;
     cout << "====================" << endl;
     float subtotal=0,impuesto,costo_total,descuento;
     for (int i=0;i<5;i++){
         cout << "producto: " << carrito[i] << " cantidad: " << cantidad[i] << " precio: $" << pre_comida[i] << std::endl;
+        cout << "producto:"  << carrito_limpieza[i] << " cantidad: " << cant_limpieza[i] << " precio: $" << pre_limpieza[i] << std::endl;
+        subtotal+=pre_limpieza[i];
         subtotal+=pre_comida[i];
     }
+
+    cout << "subtotal: $" << subtotal << endl;
+    impuesto=subtotal*0.08;
+    cout << "impuesto(8%): $" << impuesto << endl;
+    costo_total=subtotal+impuesto;
+    if (costo_total>100){
+        descuento=costo_total*0.1;
+        costo_total=costo_total-descuento;
+        cout << "descuento(10%): $" << descuento << endl; 
+    }  
+
+    cout << "costo total: $" << costo_total << endl;
+    cout << "====================" << endl;
+    cout << "GRACIAS POR SU COMPRA" << endl;
 }
 
 int menu(){
@@ -120,7 +136,7 @@ int main(){
                 break;
         }
     }
-    factura(cant_comida,carrito_comida,pre_comida);
+    factura(cant_comida,carrito_comida,pre_comida, pre_limpieza, carrito_limpieza, cant_limpieza);
 
 
 }
