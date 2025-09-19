@@ -41,7 +41,32 @@ void comida(int cantidad[5],string carrito[5],int pre_comida[5]){
     
 }
 
-void liempieza(){
+void liempieza(int cant_limpieza[5],string carrito[5],int pre_limpieza[5]){
+    string pr_limpieza[5]={"jabón","cloro","detergente","limpiador","desinfectante"};
+    int precio[5]={10,12,15,20,25};
+
+    cout << "PRODUCTOS LIMPIEZA" << endl;
+    cout << "====================" << endl;
+    cout << "puedes llevar maximo 5 productos" << endl;
+    for (int i=0;i<5;i++){
+        std::cout << pr_limpieza[i] << " $" << precio[i] << endl;
+    }
+    int i=0;
+    char opc='s';
+    while (opc=='s' && i<5){
+        cout << "¿que producto desea llevar?(escriba el nombre): ";
+        cin >> carrito[i];
+        cout << "¿cuantos desea llevar?(numero): ";
+        cin >> cant_limpieza[i];
+        for (int j=0;j<5;j++){
+            if (carrito[i]==pr_limpieza[j]){
+                pre_limpieza[i]=precio[j]*cant_limpieza[i];
+            }
+        }
+        i++;
+        cout << "¿desea llevar otro producto?(s/n): ";
+        cin >> opc;
+    }
 }
 
 void factura(int cantidad[5],string carrito[5],int pre_comida[5]){
@@ -66,9 +91,12 @@ int menu(){
 }
 
 int main(){
-    int cantidad[5]={0};
-    string carrito[5]={""};
+    int cant_comida[5]={0};
+    string carrito_comida[5]={""};
     int pre_comida[5]={0};
+    int pre_limpieza[5]={0};
+    string carrito_limpieza[5]={""};
+    int cant_limpieza[5]={0};
     char opc='s';
     int a=0;
     cout << "BIENVENIDO A LA TIENDA ECI PA" << endl;
@@ -79,10 +107,10 @@ int main(){
         a=menu();
         switch (a){
             case 1:
-                comida(cantidad,carrito,pre_comida);
+                comida(cant_comida,carrito_comida,pre_comida);
                 break;
             case 2:
-                liempieza();
+                liempieza(cant_limpieza,carrito_limpieza,pre_limpieza);
                 break;
             case 3:
                 cout << "GRACIAS" << endl;
@@ -92,7 +120,7 @@ int main(){
                 break;
         }
     }
-    factura(cantidad,carrito,pre_comida);
+    factura(cant_comida,carrito_comida,pre_comida);
 
 
 }
